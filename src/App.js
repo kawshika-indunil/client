@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import {BrowserRouter,Route} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Createstaff from './components/Createstaff';
+import Editstaff from './components/Editstaff';
+import staffHome from './components/staffHome';
+import NavBarstaff from './components/NavBarstaff';
+import staffDetails from './components/staffDetails';
+
+
+export default class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+
+       <div className="container">
+         <NavBarstaff/>
+         <Route path="/" exact component={staffHome}></Route>
+         <Route path="/add"component={Createstaff}></Route>
+         <Route path="/edit/:id"component={Editstaff}></Route>
+         <Route path="/staff/:id"component={staffDetails}></Route> 
+
+
+       </div>
+           
+      </BrowserRouter>
+  
+    )
+  }
 }
-
-export default App;
